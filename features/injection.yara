@@ -1,6 +1,7 @@
 import "pe"
 
-//Detect capabilities needed for the DLL injection
+// http://blog.opensecurityresearch.com/2013/01/windows-dll-injection-basics.html
+// Detect capabilities needed for the DLL injection
 // ProcessA -> OpenProcess(); -> ProcessB
 // ProcessA -> VirtualAlloc(); -> ProcessB
 // ProcessA -> WriteProcessMemory(); -> ProcessB
@@ -11,10 +12,11 @@ import "pe"
 // RtlCreateUserThread;
 
 
-rule dll_injection_thread : feature dll injection windows
+rule dll_injection_thread : suspicious feature dll injection windows
 {
 meta:
 	description = "Injection using kernel32.dll:VirtualAllocEx"
+	link = "http://blog.opensecurityresearch.com/2013/01/windows-dll-injection-basics.html"
 
 strings:
 	$load_01 = "LoadLibraryA"
@@ -61,7 +63,7 @@ condition:
 }
 
 
-rule dll_injection_hook : feature dll injection windows
+rule dll_injection_hook : suspicious feature dll injection windows
 {
 meta:
 	description = "Injection using User32.dll:VirtualAllocEx"
@@ -76,3 +78,4 @@ condition:
 		pe.imports("user32.dll","SetWindowsHookExW")
 	)
 }
+
