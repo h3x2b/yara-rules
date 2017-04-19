@@ -1,3 +1,4 @@
+include "./exploit/maldoc.yara"
 include "./exploit/malrtf.yara"
 include "./exploit/nccgroup_stdolelink.yara"
 include "./features/anti_debug.yara"
