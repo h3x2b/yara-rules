@@ -7,7 +7,7 @@ rule archive_cab : info archive cab windows
 	condition:
                 //MSCF on the beginning of file
                 uint32(0) == 0x4643534d and
-                uint32(1) == 0x00000000 
+                uint32(4) == 0x00000000 
 }
 
 rule embedded_archive_cab : info embedded archive cab windows
