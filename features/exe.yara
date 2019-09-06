@@ -9,7 +9,7 @@ rule executable_pe : info executable windows
 
 	condition:
                 //MZ on the beginning of file
-                uint16(0) == 0x5a4d and
+                uint16be(0) == 0x4d5a and
 		//PE at offset given by 0x3c
 		($pe at (uint32(0x3c)))
 }
@@ -24,7 +24,7 @@ rule executable_elf32 : info executable linux
 
 	condition:
                 //ELF magic
-                uint32(0) == 0x464c457f and
+                uint32be(0) == 0x7f454c46 and
 		uint8(4) == 0x01
 }
 
