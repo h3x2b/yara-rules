@@ -1,5 +1,27 @@
 import "pe"
 
+
+rule self_inject : suspicious feature dll injection windows
+{
+meta:
+        description = "Self Injecting code - like code packers"
+        link = ""
+
+strings:
+        // Allocate new memory
+	$self01 = "VirtualAlloc"
+        // Change the executable bit of te new memory
+	$self02 = "VirtualProtect"
+        // Create new process
+        $self03 = "CreateProcessInternal"
+
+condition:
+	// MZ at the beginning of file
+        uint16be(0) == 0x4d5a and
+        all of them
+}
+
+
 // http://blog.opensecurityresearch.com/2013/01/windows-dll-injection-basics.html
 // Detect capabilities needed for the DLL injection
 // ProcessA -> OpenProcess(); -> ProcessB
@@ -10,7 +32,6 @@ import "pe"
 // CreateRemoteThread();
 // NtCreateThreadEx();
 // RtlCreateUserThread;
-
 
 rule dll_injection_thread : suspicious feature dll injection windows
 {
@@ -25,7 +46,7 @@ strings:
 
 condition:
 	// MZ at the beginning of file
-        uint16(0) == 0x5a4d and
+        uint16be(0) == 0x4d5a and
 
 	// Access other process
 	//(
