@@ -35,7 +35,7 @@ rule ole_equation_editor : info ole equation_editor windows
 		$clsid_equation_editor = { 02 CE 02 00 00 00 00 00 C0 00 00 00 00 00 00 46 }
 
 	condition:
-		$msdocfile_hexstring
+		$clsid_equation_editor
 }
 
 
