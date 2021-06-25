@@ -29,6 +29,7 @@ rule ole_equation_editor : info ole equation_editor windows
 {
 	meta:
 		//author = "@h3x2b <tracker _AT h3x.eu>"
+		//https://blogs.quickheal.com/obfuscated-equation-editor-exploit-cve-2017-11882-spreading-hawkeye-keylogger/
 		description = "Detect embedded CLSID OLE of Equation Editor used in CVE-2017-11882"
 
 	strings:
