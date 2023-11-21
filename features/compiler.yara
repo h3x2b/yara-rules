@@ -1,4 +1,4 @@
-rule executable_au3 : info compiler autit
+rule executable_au3_01 : info compiler autoit
 {
     meta:
         // author = "@h3x2b <tracker _AT h3x.eu>"
@@ -12,6 +12,20 @@ rule executable_au3 : info compiler autit
         all of them
 }
 
+rule executable_au3_02 : info compiler autoit
+{
+    meta:
+        // author = "@h3x2b <tracker _AT h3x.eu>"
+        description = "Match AU3 autoit executables"
+
+    strings:
+        $str_au3_01 = "AutoIt3"
+        $str_au3_02 = "AutoIt v3"
+        $str_au3_03 = "AU3!"
+
+    condition:
+        all of them
+}
 
 
 rule vb_pcode : info compiler vb
