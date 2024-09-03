@@ -12,6 +12,6 @@ rule zlib: info feature library
                 uint32(0) == 0x464c457f and
 
                 //Contains all of the strings
-                1 of ($lkm_*)
+                1 of ($zlib_*)
 }
 
