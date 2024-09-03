@@ -6,12 +6,13 @@ rule zlib: info feature library
 
         strings:
                 $zlib_00 = " deflate 1.2.11 Copyright 1995-2017 Jean-loup Gailly and Mark Adler "
+                $zlib_01 = "deflate_copyright"
 
         condition:
                 //ELF magic
                 uint32(0) == 0x464c457f and
 
-                //Contains all of the strings
+                //Contains any of the strings
                 1 of ($zlib_*)
 }
 
