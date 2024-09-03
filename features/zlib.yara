@@ -5,7 +5,7 @@ rule zlib: info feature library
                 description = "Detects usage of zlib deflate by copyright string"
 
         strings:
-                $zlib_00 = "Copyright 1995-2017 Jean-loup Gailly and Mark Adler"
+                $zlib_00 = " deflate 1.2.11 Copyright 1995-2017 Jean-loup Gailly and Mark Adler "
 
         condition:
                 //ELF magic
