@@ -10,7 +10,7 @@ rule zlib: info feature library
 
         condition:
                 //ELF magic
-                uint32(0) == 0x464c457f and
+                uint32be(0) == 0x7f454c46 and
 
                 //Contains any of the strings
                 1 of ($zlib_*)

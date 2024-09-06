@@ -17,7 +17,7 @@ rule linux_kernel_module: info linux lkm
 
         condition:
                 //ELF magic
-                uint32(0) == 0x464c457f and
+                uint32be(0) == 0x7f454c46 and
 
                 //Contains all of the strings
                 5 of ($lkm_*)
@@ -44,7 +44,7 @@ rule linux_kernel_module_embedded: info linux lkm
 
         condition:
                 //ELF magic
-                uint32(0) != 0x464c457f and
+                uint32be(0) != 0x7f454c46 and
 
                 //Contains all of the strings
                 5 of ($lkm_*)

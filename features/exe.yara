@@ -37,6 +37,6 @@ rule executable_elf64 : info executable linux
 
 	condition:
                 //ELF magic
-                uint32(0) == 0x464c457f and
+                uint32be(0) == 0x7f454c46 and
 		uint8(4) == 0x02
 }
