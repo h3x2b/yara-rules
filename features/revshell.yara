@@ -1,11 +1,11 @@
 import "pe"
 
-// Detect capabilities of opening network sockets
+// Detect capabilities of running reverse shell
 
-rule winsocks : feature networking windows
+rule win_revshell : feature networking windows
 {
 meta:
-	description = "Imports Winsock Library"
+	description = "Imports Win reverse shell"
 
 
 
