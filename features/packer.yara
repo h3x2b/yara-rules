@@ -9,7 +9,7 @@ rule upx_sections : info packer upx
         $str_upx_02 = "UPX1"
 
     condition:
-        uint16(0) == 0x5a4d and
+        uint16be(0) == 0x4d5a and
         all of ( $str_upx_* )
 }
 

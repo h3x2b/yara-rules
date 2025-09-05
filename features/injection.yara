@@ -92,7 +92,7 @@ meta:
 
 condition:
 	// MZ at the beginning of file
-        uint16(0) == 0x5a4d and
+        uint16be(0) == 0x4d5a and
 
 	(
 		pe.imports("user32.dll","SetWindowsHookExA") or
